@@ -34,6 +34,20 @@ bool isPowerTwo (unsigned int x)
   return ((x != 0) && ((x & (~x + 1)) == x));
 }
 // ------------
+// degree2
+// ------------
+
+int degree2 (int a)
+{
+	int count=0;
+	while(a!=1)
+	{
+		a=a>>1;
+		count++;
+	}
+	return count;
+}
+// ------------
 // cycle_length
 // ------------
 
@@ -48,7 +62,8 @@ int cycle_length(int n)
 		else{
 			if(isPowerTwo(n))
 			{
-				
+				count+=degree2(n);
+				break;
 			}
 			n=n/2;
 		    }

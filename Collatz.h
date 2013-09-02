@@ -31,6 +31,15 @@ bool collatz_read (std::istream&, int&, int&);
 
 bool isPowerTwo (unsigned int);
 // ------------
+// degree2
+// ------------
+/*
+	returns position of leftmost 1 bit
+	used to calculate what power of 2 a number is
+	(if isPowerTwo is true)
+*/
+int degree2 (int);
+// ------------
 // cycle_length
 // ------------
 
