@@ -54,6 +54,23 @@ TEST(Collatz, read) {
     ASSERT_TRUE(b == true);
     ASSERT_TRUE(i ==    1);
     ASSERT_TRUE(j ==   10);}
+TEST(Collatz, read2) {
+    std::istringstream r("1 1\n");
+    int i;
+    int j;
+    const bool b = collatz_read(r, i, j);
+    ASSERT_TRUE(b == true);
+    ASSERT_TRUE(i ==    1);
+    ASSERT_TRUE(j ==   1);}
+TEST(Collatz, read3) {
+    std::istringstream r("1 2\n");
+    int i;
+    int j;
+    const bool b = collatz_read(r, i, j);
+    ASSERT_TRUE(b == true);
+    ASSERT_TRUE(i ==    1);
+    ASSERT_TRUE(j ==   2);}
+
 
 // ----
 // eval
@@ -83,6 +100,14 @@ TEST(Collatz, print) {
     std::ostringstream w;
     collatz_print(w, 1, 10, 20);
     ASSERT_TRUE(w.str() == "1 10 20\n");}
+TEST(Collatz, print2) {
+    std::ostringstream w;
+    collatz_print(w, 100, 1000, 200);
+    ASSERT_TRUE(w.str() == "100 1000 200\n");}
+TEST(Collatz, print3) {
+    std::ostringstream w;
+    collatz_print(w, 1, 1, 1);
+    ASSERT_TRUE(w.str() == "1 1 1\n");}
 
 // -----
 // solve

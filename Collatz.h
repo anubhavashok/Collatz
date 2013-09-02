@@ -25,6 +25,17 @@
  * @return true if that succeeds, false otherwise
  */
 bool collatz_read (std::istream&, int&, int&);
+// ------------
+// isPowerTwo
+// ------------
+
+bool isPowerTwo (unsigned int);
+// ------------
+// cycle_length
+// ------------
+
+int collatz_eval (int);
+
 
 // ------------
 // collatz_eval

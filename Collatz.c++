@@ -25,6 +25,37 @@ bool collatz_read (std::istream& r, int& i, int& j) {
     assert(i > 0);
     assert(j > 0);
     return true;}
+// ------------
+// isPowerTwo
+// ------------
+
+bool isPowerTwo (unsigned int x)
+{
+  return ((x != 0) && ((x & (~x + 1)) == x));
+}
+// ------------
+// cycle_length
+// ------------
+
+int cycle_length(int n)
+{
+	int count=1;
+	while(n!=1)
+	{
+		//printf("%d ", n);
+		if(n%2!=0)
+			n=3*n+1;
+		else{
+			if(isPowerTwo(n))
+			{
+				
+			}
+			n=n/2;
+		    }
+		count++;
+	}
+	return (count);
+}
 
 // ------------
 // collatz_eval
@@ -33,8 +64,13 @@ bool collatz_read (std::istream& r, int& i, int& j) {
 int collatz_eval (int i, int j) {
     assert(i > 0);
     assert(j > 0);
-    // <your code>
     int v = 1;
+    for(int cur=i;cur<=j;cur++)
+    {
+      int cl=cycle_length(cur);
+      if(cl>v) 
+	v=cl;
+    }
     assert(v > 0);
     return v;}
 
