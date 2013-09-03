@@ -25,52 +25,42 @@ bool collatz_read (std::istream& r, int& i, int& j) {
     assert(i > 0);
     assert(j > 0);
     return true;}
-// ------------
-// isPowerTwo
-// ------------
 
-bool isPowerTwo (unsigned int x)
-{
-  return ((x != 0) && ((x & (~x + 1)) == x));
-}
-// ------------
-// degree2
-// ------------
 
-int degree2 (int a)
+// ------------
+// fill_cache_pwr2
+// ------------
+void fill_cache_pwr2(int* cache)
 {
-	int count=0;
-	while(a!=1)
+	int index=1;
+	for(int i=1;i<19;i++)
 	{
-		a=a>>1;
-		count++;
+		index<<=1;
+		cache[index]=i+1;
 	}
-	return count;
 }
+
+static int cache[1000000];
 // ------------
 // cycle_length
 // ------------
-
-int cycle_length(int n)
+unsigned int cycle_length(unsigned int n)
 {
-	int count=1;
-	while(n!=1)
-	{
-		//printf("%d ", n);
-		if(n%2!=0)
-			n=3*n+1;
-		else{
-			if(isPowerTwo(n))
-			{
-				count+=degree2(n);
-				break;
-			}
-			n=n/2;
-		    }
-		count++;
-	}
-	return (count);
+	if(n==1) return 1;
+	if (n < 1000000 && cache[n] != 0)
+	return cache[n];
+	
+	//if(!(n & (n-1))) return degree2(n)+1;
+	
+	int next=(n&1)? 3*n+1 : n>>1;
+	int length = 1 + cycle_length(next);
+	
+	if (n < 1000000)
+	cache[n] = length;
+ 
+	return length;
 }
+
 
 // ------------
 // collatz_eval
@@ -80,6 +70,7 @@ int collatz_eval (int i, int j) {
     assert(i > 0);
     assert(j > 0);
     int v = 1;
+    fill_cache_pwr2(cache);
     for(int cur=i;cur<=j;cur++)
     {
       int cl=cycle_length(cur);

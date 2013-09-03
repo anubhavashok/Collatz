@@ -25,25 +25,25 @@
  * @return true if that succeeds, false otherwise
  */
 bool collatz_read (std::istream&, int&, int&);
-// ------------
-// isPowerTwo
-// ------------
 
-bool isPowerTwo (unsigned int);
 // ------------
-// degree2
+// fill_cache_pwr2
 // ------------
-/*
-	returns position of leftmost 1 bit
-	used to calculate what power of 2 a number is
-	(if isPowerTwo is true)
-*/
-int degree2 (int);
+/**
+ * prefills cache with cycle lengths of all possible 2^n numbers under 1,000,000
+ * @param cache a int array by reference
+ */
+void fill_cache_pwr2(int*);
+
 // ------------
 // cycle_length
 // ------------
-
-int collatz_eval (int);
+/**
+ * recursively calls itself to return cycle lengths. reads cache for previous lengths
+ * @param n an int 
+ * @return length of cycle of n
+ */
+unsigned int cycle_length (unsigned int);
 
 
 // ------------

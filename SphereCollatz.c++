@@ -106,34 +106,34 @@ bool collatz_read (std::istream& r, int& i, int& j) {
 
 bool isPowerTwo (unsigned int x)
 {
-  return ((x != 0) && ((x & (~x + 1)) == x));
+  return ((x & (~x + 1)) == x);
 }
 // ------------
 // degree2
 // ------------
-
+static const unsigned int b[] = {0xAAAAAAAA, 0xCCCCCCCC, 0xF0F0F0F0, 
+		                         0xFF00FF00, 0xFFFF0000};
 int degree2 (int a)
 {
-	int count=0;
+/*	int count=0;
 	while(a>>=1) count++;
 	return count;
-/*
+*/
 	unsigned int v=a; 
-	static const unsigned int b[] = {0xAAAAAAAA, 0xCCCCCCCC, 0xF0F0F0F0, 
-		                         0xFF00FF00, 0xFFFF0000};
+
 	register unsigned int r = (v & b[0]) != 0;
 	for (int i = 4; i > 0; i--)
 	{
 	  r |= ((v & b[i]) != 0) << i;
 	}
 	return r;
-*/
+
 
 }
 // ------------
 // cycle_length
 // ------------
-static int cache[1000000]={0};
+static int cache[1000001];
 
 
 int cycle_length(int n)
@@ -143,20 +143,24 @@ int cycle_length(int n)
 	while(n!=1)
 	{
 		if((n<1000000)&&(cache[n]!=0)) return count+cache[n]-1;
-		if(n%2!=0)
+		if(n%2==1)//might want to change to n&1
 			n=3*n+1;
 		else{
-			if(isPowerTwo(n))
+			if(!(n & (n-1)))//n isPower2
 			{
-				count+=degree2(n);
-				break;
+				int d2=degree2(n);
+				count=count+d2;
+				if(n<1000000) cache[n]=d2+1;
+
+				cache[initial_n]=count;
+				return count;
 			}
-			n=n/2;
+			n=n>>1;	//n divide by 2
 		    }
-		count++;
+		++count;
 	}
 	cache[initial_n]=count;
-	return (count);
+	return count;
 }
 
 // ------------
