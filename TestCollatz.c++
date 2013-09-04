@@ -89,8 +89,11 @@ TEST(Collatz, eval_3) {
     ASSERT_TRUE(v == 89);}
 
 TEST(Collatz, eval_4) {
-    const int v = collatz_eval(900, 1000);
-    ASSERT_TRUE(v == 174);}
+    const int v = collatz_eval(1, 999999);
+    ASSERT_TRUE(v == 525);}
+TEST(Collatz, eval_5) {
+    const int v = collatz_eval(999999, 999999);
+    ASSERT_TRUE(v == 259);}
 
 // -----
 // print

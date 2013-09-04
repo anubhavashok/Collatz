@@ -33,7 +33,7 @@ bool collatz_read (std::istream&, int&, int&);
  * prefills cache with cycle lengths of all possible 2^n numbers under 1,000,000
  * @param cache a int array by reference
  */
-void fill_cache_pwr2(int*);
+void fill_cache_pwr2(short*);
 
 // ------------
 // cycle_length
@@ -43,6 +43,7 @@ void fill_cache_pwr2(int*);
  * @param n an int 
  * @return length of cycle of n
  */
+#define _CACHE_SIZE 1000000
 unsigned int cycle_length (unsigned int);
 
 

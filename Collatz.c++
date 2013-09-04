@@ -30,37 +30,41 @@ bool collatz_read (std::istream& r, int& i, int& j) {
 // ------------
 // fill_cache_pwr2
 // ------------
-void fill_cache_pwr2(int* cache)
+void fill_cache_pwr2(short* cache)
 {
-	int index=1;
-	for(int i=1;i<19;i++)
+	//register int index=1;
+	register unsigned int index[]={1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288};
+	for(short i=0;i<20;i++)
 	{
-		index<<=1;
-		cache[index]=i+1;
+		//index<<=1;
+		cache[ index[i] ]=i+1;
 	}
 }
-
-static int cache[1000000];
+static short cache[_CACHE_SIZE];
 // ------------
 // cycle_length
 // ------------
+
 unsigned int cycle_length(unsigned int n)
 {
-	if(n==1) return 1;
-	if (n < 1000000 && cache[n] != 0)
+	//base case
+	//if(n==1) return 1;
+
+	//check if n is in cache
+	if (n < _CACHE_SIZE)
+	if (cache[n] != 0)
 	return cache[n];
+
+	//inline for if(n%2==1) return 3*n+1; else return n*2;
+	unsigned int next=(n&1)? 3*n+1 : n>>1;
+	register short length = 1 + cycle_length(next);
 	
-	//if(!(n & (n-1))) return degree2(n)+1;
-	
-	int next=(n&1)? 3*n+1 : n>>1;
-	int length = 1 + cycle_length(next);
-	
-	if (n < 1000000)
+	//add n to cache
+	if (n < _CACHE_SIZE)
 	cache[n] = length;
  
 	return length;
 }
-
 
 // ------------
 // collatz_eval

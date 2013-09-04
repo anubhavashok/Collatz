@@ -19,28 +19,24 @@
 bool collatz_read (std::istream&, int&, int&);
 
 // ------------
-// isPowerTwo
+// fill_cache_pwr2
 // ------------
-
-bool isPowerTwo (unsigned int);
-// ------------
-// degree2
-// ------------
-/*
-	returns position of leftmost 1 bit
-	used to calculate what power of 2 a number is
-	(if isPowerTwo is true)
-*/
-int degree2 (int);
-// ------------
-// cycle_length
-// ------------
+/**
+ * prefills cache with cycle lengths of all possible 2^n numbers under 1,000,000
+ * @param cache a int array by reference
+ */
+void fill_cache_pwr2(short*);
 
 // ------------
 // cycle_length
 // ------------
-
-int collatz_eval (int);
+/**
+ * recursively calls itself to return cycle lengths. reads cache for previous lengths
+ * @param n an int 
+ * @return length of cycle of n
+ */
+#define _CACHE_SIZE 1000000
+unsigned int cycle_length (unsigned int);
 
 
 // ------------
@@ -100,83 +96,65 @@ bool collatz_read (std::istream& r, int& i, int& j) {
     assert(j > 0);
     return true;}
 
-// ------------
-// isPowerTwo
-// ------------
 
-bool isPowerTwo (unsigned int x)
-{
-  return ((x & (~x + 1)) == x);
-}
+#include<stdio.h>
+#include<iostream>
+using namespace std;
 // ------------
-// degree2
+// fill_cache_pwr2
 // ------------
-static const unsigned int b[] = {0xAAAAAAAA, 0xCCCCCCCC, 0xF0F0F0F0, 
-		                         0xFF00FF00, 0xFFFF0000};
-int degree2 (int a)
+void fill_cache_pwr2(short* cache)
 {
-/*	int count=0;
-	while(a>>=1) count++;
-	return count;
-*/
-	unsigned int v=a; 
-
-	register unsigned int r = (v & b[0]) != 0;
-	for (int i = 4; i > 0; i--)
+	//register int index=1;
+	register unsigned int index[]={1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288};
+	for(short i=0;i<20;i++)
 	{
-	  r |= ((v & b[i]) != 0) << i;
+		//index<<=1;
+		cache[ index[i] ]=i+1;
 	}
-	return r;
-
 
 }
+static short cache[1000001];
 // ------------
 // cycle_length
 // ------------
-static int cache[1000001];
 
-
-int cycle_length(int n)
+unsigned int cycle_length(unsigned int n)
 {
-	int count=1;
-	int initial_n = n;
-	while(n!=1)
-	{
-		if((n<1000000)&&(cache[n]!=0)) return count+cache[n]-1;
-		if(n%2==1)//might want to change to n&1
-			n=3*n+1;
-		else{
-			if(!(n & (n-1)))//n isPower2
-			{
-				int d2=degree2(n);
-				count=count+d2;
-				if(n<1000000) cache[n]=d2+1;
+	//base case
+	//if(n==1) return 1;
 
-				cache[initial_n]=count;
-				return count;
-			}
-			n=n>>1;	//n divide by 2
-		    }
-		++count;
-	}
-	cache[initial_n]=count;
-	return count;
+	//check if n is in cache
+	if (n < _CACHE_SIZE)
+	if (cache[n] != 0)
+	return cache[n];
+
+	//inline for if(n%2==1) return 3*n+1; else return n*2;
+	unsigned int next=(n&1)? 3*n+1 : n>>1;
+	register short length = 1 + cycle_length(next);
+	
+	//add n to cache
+	if (n < _CACHE_SIZE)
+	cache[n] = length;
+ 
+	return length;
 }
 
 // ------------
 // collatz_eval
 // ------------
 #include <algorithm>    // std::swap
+
     using namespace std;
 int collatz_eval (int i, int j) {
-
     assert(i > 0);
     assert(j > 0);
     if(j<i) std::swap(i,j);
-    int v = 1;
+    short v = 1;
+    fill_cache_pwr2(cache);
     for(int cur=i;cur<=j;cur++)
     {
-      int cl=cycle_length(cur);
+      short cl=cycle_length(cur);
       if(cl>v) 
 	v=cl;
     }
