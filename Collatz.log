@@ -1,0 +1,10 @@
+0000000000000000000000000000000000000000 e9b323f38cc2a2223312dcd192a5d1ab709ef04e anubhav ashok <socter@cs.utexas.edu> 1377890870 -0500	clone: from https://github.com/anubhavashok/cs371p-collatz.git
+e9b323f38cc2a2223312dcd192a5d1ab709ef04e 38fe438a4a5ecf4793347a8ec6fb32d71bbc24fa anubhav ashok <socter@cs.utexas.edu> 1377890956 -0500	commit: initial file commit
+38fe438a4a5ecf4793347a8ec6fb32d71bbc24fa 9e49a29e789aba640b884df28048248343c0e9f7 anubhav ashok <socter@cs.utexas.edu> 1378155414 -0500	commit: added new unit tests
+9e49a29e789aba640b884df28048248343c0e9f7 9a91ea39a2600db0e82c1dcb0e64c43efe073038 anubhav ashok <socter@cs.utexas.edu> 1378157366 -0500	commit: added power of 2 optimization
+9a91ea39a2600db0e82c1dcb0e64c43efe073038 5520256faddd82d22cc1fee2bec68e9f9da40211 anubhav ashok <socter@cs.utexas.edu> 1378178522 -0500	commit: added SphereCollatz.c++ and made cache
+5520256faddd82d22cc1fee2bec68e9f9da40211 1eeb5598dad93e49e40567e30360b02f5f8961dc anubhav ashok <socter@cs.utexas.edu> 1378189747 -0500	commit: prefill cache and recursive cycle_length
+1eeb5598dad93e49e40567e30360b02f5f8961dc a3827718e2876aae6d9372ee00bd8f9521267cd0 anubhav ashok <socter@cs.utexas.edu> 1378322821 -0500	commit: refined cache, created SphereCollatz.c++,added acceptance tests
+a3827718e2876aae6d9372ee00bd8f9521267cd0 6e4b7c7a8a56f4f659f6804fbb37ec1a3d256b6b anubhav ashok <socter@cs.utexas.edu> 1378322952 -0500	commit: created Doxyfile, refine cache, other optimizatons
+6e4b7c7a8a56f4f659f6804fbb37ec1a3d256b6b 3b27f8da71b730fe169e7303ffe543a7b1008626 anubhav ashok <socter@cs.utexas.edu> 1378323224 -0500	commit: remove irrelevant files
+3b27f8da71b730fe169e7303ffe543a7b1008626 666d71c7d43b2f55a1c93e38b368e4939777c0c8 anubhav ashok <socter@cs.utexas.edu> 1378323260 -0500	commit: Remove TestCollatz executable

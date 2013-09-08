@@ -43,6 +43,7 @@ void fill_cache_pwr2(short*);
  * @param n an int 
  * @return length of cycle of n
  */
+#define _CACHE_SIZE 1048576
 short cycle_length (unsigned int);
 
 

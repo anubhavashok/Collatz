@@ -69,7 +69,7 @@ TEST(Collatz, read3) {
     const bool b = collatz_read(r, i, j);
     ASSERT_TRUE(b == true);
     ASSERT_TRUE(i ==    1);
-    ASSERT_TRUE(j ==   1000000);}
+    ASSERT_TRUE(j ==   2);}
 
 
 // ----

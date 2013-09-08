@@ -4,6 +4,7 @@
 // --------
 
 #include <iostream> // istream, ostream
+#include <stdint.h>
 
 // ------------
 // collatz_read
@@ -25,7 +26,7 @@ bool collatz_read (std::istream&, int&, int&);
  * prefills cache with cycle lengths of all possible 2^n numbers under 1,000,000
  * @param cache a int array by reference
  */
-void fill_cache_pwr2(short*);
+void fill_cache_pwr2(int_fast16_t*);
 
 // ------------
 // cycle_length
@@ -36,7 +37,7 @@ void fill_cache_pwr2(short*);
  * @return length of cycle of n
  */
 #define _CACHE_SIZE 1048576
-short cycle_length (unsigned int);
+int_fast16_t cycle_length (unsigned int);
 
 
 // ------------
@@ -103,7 +104,7 @@ using namespace std;
 // ------------
 // fill_cache_pwr2
 // ------------
-void fill_cache_pwr2(short* cache)
+void fill_cache_pwr2(int_fast16_t* cache)
 {
 	//register int index=1;
 	register int index[]={1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288,1048576};
@@ -114,12 +115,12 @@ void fill_cache_pwr2(short* cache)
 	}
 
 }
-static short cache[_CACHE_SIZE];
+static int_fast16_t cache[_CACHE_SIZE];
 // ------------
 // cycle_length
 // ------------
 
-short cycle_length(unsigned int n)
+int_fast16_t cycle_length(unsigned int n)
 {
 	//base case
 	//if(n==1) return 1;
@@ -131,7 +132,7 @@ short cycle_length(unsigned int n)
 
 	//inline for if(n%2==1) return 3*n+1; else return n*2;
 	register unsigned int next=(n%2==1)? 3*n+1 : n>>1;
-	register short length = 1 + cycle_length(next);
+	register int_fast16_t length = 1 + cycle_length(next);
 	
 	//add n to cache
 	if (n < _CACHE_SIZE)
