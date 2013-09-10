@@ -19,13 +19,13 @@ doc: Collatz.c++
 	doxygen Doxyfile
 
 turnin-list:
-	turnin --list reza cs371ppj1
+	turnin --list hchuying cs371ppj1
 
 turnin-submit: Collatz.zip
-	turnin --submit reza cs371ppj1 Collatz.zip
+	turnin --submit hchuying cs371ppj1 Collatz.zip
 
 turnin-verify:
-	turnin --verify reza cs371ppj1
+	turnin --verify hchuying cs371ppj1
 
 Collatz.log:
 	git log > Collatz.log
@@ -53,3 +53,4 @@ TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
 
 TestCollatz.out: TestCollatz
 	valgrind TestCollatz > TestCollatz.out
+

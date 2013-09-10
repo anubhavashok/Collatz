@@ -8,3 +8,4 @@ e9b323f38cc2a2223312dcd192a5d1ab709ef04e 38fe438a4a5ecf4793347a8ec6fb32d71bbc24f
 a3827718e2876aae6d9372ee00bd8f9521267cd0 6e4b7c7a8a56f4f659f6804fbb37ec1a3d256b6b anubhav ashok <socter@cs.utexas.edu> 1378322952 -0500	commit: created Doxyfile, refine cache, other optimizatons
 6e4b7c7a8a56f4f659f6804fbb37ec1a3d256b6b 3b27f8da71b730fe169e7303ffe543a7b1008626 anubhav ashok <socter@cs.utexas.edu> 1378323224 -0500	commit: remove irrelevant files
 3b27f8da71b730fe169e7303ffe543a7b1008626 666d71c7d43b2f55a1c93e38b368e4939777c0c8 anubhav ashok <socter@cs.utexas.edu> 1378323260 -0500	commit: Remove TestCollatz executable
+666d71c7d43b2f55a1c93e38b368e4939777c0c8 38a6ebe9de3cd1b179e1cd2ae20565cd31968ff1 anubhav ashok <socter@cs.utexas.edu> 1378598934 -0500	commit: Final update with unit tests, acceptance tests

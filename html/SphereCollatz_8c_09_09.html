@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SphereCollatz_8c_09_09.html#af804ceae0dd8a807cfeb564a00431640">_CACHE_SIZE</a>&#160;&#160;&#160;1048576</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SphereCollatz_8c_09_09.html#af804ceae0dd8a807cfeb564a00431640">_CACHE_SIZE</a>&#160;&#160;&#160;524289</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SphereCollatz_8c_09_09.html#a84e7da600fe185b3686056d32a02380f">collatz_read</a> (std::istream &amp;, int &amp;, int &amp;)</td></tr>
@@ -102,6 +102,7 @@ Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SphereCollatz_8c_09_09.html#afdd612a5e33c3d91af424d588c2a67da">cache</a> [<a class="el" href="SphereCollatz_8c_09_09.html#af804ceae0dd8a807cfeb564a00431640">_CACHE_SIZE</a>]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="SphereCollatz_8c_09_09.html#aff4574f438b845470c8b8c2ef8742bf0">cycle_cache</a> []</td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
 <a class="anchor" id="af804ceae0dd8a807cfeb564a00431640"></a><!-- doxytag: member="SphereCollatz.c++::_CACHE_SIZE" ref="af804ceae0dd8a807cfeb564a00431640" args="" -->
@@ -109,7 +110,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define <a class="el" href="SphereCollatz_8c_09_09.html#af804ceae0dd8a807cfeb564a00431640">_CACHE_SIZE</a>&#160;&#160;&#160;1048576</td>
+          <td class="memname">#define <a class="el" href="SphereCollatz_8c_09_09.html#af804ceae0dd8a807cfeb564a00431640">_CACHE_SIZE</a>&#160;&#160;&#160;524289</td>
         </tr>
       </table>
 </div>
@@ -367,6 +368,19 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aff4574f438b845470c8b8c2ef8742bf0"></a><!-- doxytag: member="SphereCollatz.c++::cycle_cache" ref="aff4574f438b845470c8b8c2ef8742bf0" args="[]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short <a class="el" href="SphereCollatz_8c_09_09.html#aff4574f438b845470c8b8c2ef8742bf0">cycle_cache</a>[]<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -385,7 +399,7 @@ Variables</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 7 2013 19:07:15 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 9 2013 22:35:57 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -6,12 +6,13 @@
 
 #ifndef Collatz_h
 #define Collatz_h
-#define _CACHE_SIZE 1048576
+#define _CACHE_SIZE 524289
 // --------
 // includes
 // --------
 
 #include <iostream> // istream, ostream
+
 
 // ------------
 // collatz_read
